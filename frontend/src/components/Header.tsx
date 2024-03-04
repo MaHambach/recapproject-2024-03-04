@@ -4,10 +4,10 @@ import './Header.css'
 export default function Header(){
     return (
         <header className={"Header"}>
-            <Link className={"button"} to={"/"}><button className={"home"} >Home</button></Link>
-            <Link className={"button"} to={"/open"}><button className={"open"}>OPEN</button></Link>
-            <Link className={"button"} to={"/in-progress"}><button className={"inProgress"}>IN PROGRESS</button></Link>
-            <Link className={"button"} to={"/done"}><button className={"done"}>DONE</button></Link>
+            <Link className={"link home"      } to={"/"           }>Home          </Link>
+            <Link className={"link open"      } to={"/open"       }>OPEN          </Link>
+            <Link className={"link inProgress"} to={"/in-progress"}>IN PROGRESS   </Link>
+            <Link className={"link done"      } to={"/done"       }>DONE          </Link>
         </header>
-    )
+    );
 }

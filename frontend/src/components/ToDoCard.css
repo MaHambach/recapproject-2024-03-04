@@ -7,11 +7,13 @@
 }
 
 .ToDoCard div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    line-height: normal;
+
     flex: 1;
     margin: 0 0 0 5px;
-    line-height: 100%;
-    display: flex;
-    align-items: center;
 }
 
 .ToDoCard span {
@@ -28,9 +30,28 @@
     font-weight: bold;
     transition: 0.2s;
     outline: none;
+    font-size: 13px;
 }
 
-.ToDoCard button:hover {
+.ToDoCard .link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: normal;
+
+    font-weight: bold;
+    text-decoration: none;
+    color:black;
+    font-size: 13px;
+
+    transition: 0.2s;
+
+    width: 80px;
+    border-left: 2px solid black;
+    outline: none;
+}
+
+.ToDoCard .link:hover {
     background-color: black;
     color: white;
 }
@@ -44,3 +65,5 @@
     background-color: red;
     color:white;
 }
+
+

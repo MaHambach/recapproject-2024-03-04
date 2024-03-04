@@ -5,7 +5,7 @@ import axios from "axios";
 type PostBarProps = {
     triggerChange: () => void;
 }
-export default function PostBar(props:Readonly<PostBarProps>){
+export default function PostBar(props:Readonly<PostBarProps>):JSX.Element{
     const [formData, setFormData] = useState<string>("");
     function handleOnSubmit(event:FormEvent<HTMLFormElement>):void {
         event.preventDefault();
@@ -13,8 +13,8 @@ export default function PostBar(props:Readonly<PostBarProps>){
                 description: formData,
                 status: "OPEN"
             })
-            .then((response) => console.log("New todo added with id " + response.data.id + "."))
-            .catch((error) => {
+            .then(response => console.log("New todo added with id " + response.data.id + "."))
+            .catch(error => {
                 console.error("Error creating todo: ", error.message);
             })
         setFormData("");

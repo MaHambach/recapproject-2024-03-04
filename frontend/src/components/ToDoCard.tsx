@@ -18,14 +18,13 @@ export default function ToDoCard(props:Readonly<ToDoCardProps>):JSX.Element {
     return (
         <form className={"ToDoCard"} onSubmit={handleOnSubmit}>
             <div>
-                <span>{props.toDo.description}</span>
+                {props.toDo.description}
             </div>
-            <Link to={'/' + props.toDo.id + '/update'}><button>Bearbeiten</button></Link>
+            <Link to={'/' + props.toDo.id + '/update'} className={"link"}>Bearbeiten</Link>
             {
                 props.toDo.status === "DONE" ?
                     <button className={"delete"} type={"submit"}> Delete </button> :
                     <button className={"moveOn"} type={"submit"}> Move on </button>
-
             }
         </form>
     )

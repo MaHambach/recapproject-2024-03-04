@@ -1,5 +1,5 @@
 import './ToDoUpdateCard.css'
-import {Link} from "react-router-dom";
+import {NavigateFunction, useNavigate} from "react-router-dom";
 import {ToDo} from "../types/ToDo.ts";
 import {ChangeEvent, FormEvent, useState} from "react";
 
@@ -9,12 +9,16 @@ type ToDoUpdateCard= {
 }
 export default function ToDoUpdateCard(props:Readonly<ToDoUpdateCard>):JSX.Element{
     const [formToDo, setFormToDo] = useState<ToDo>(props.toDo);
-    function handleOnSubmit(event:FormEvent):void{
+
+    const navigate:NavigateFunction = useNavigate();
+
+    function handleOnSubmit(event:FormEvent<HTMLFormElement>):void{
         event.preventDefault();
         props.updateToDoFunction(formToDo);
+        navigate("/");
     }
 
-    function handleChangeInput(event: ChangeEvent<HTMLInputElement>) {
+    function handleChangeInput(event: ChangeEvent<HTMLInputElement>):void {
         setFormToDo(
             {
                 ...formToDo,
@@ -22,7 +26,7 @@ export default function ToDoUpdateCard(props:Readonly<ToDoUpdateCard>):JSX.Eleme
             })
     }
 
-    function handleChangeSelect(event: ChangeEvent<HTMLSelectElement>) {
+    function handleChangeSelect(event: ChangeEvent<HTMLSelectElement>):void {
         setFormToDo(
             {
                 ...formToDo,
@@ -49,7 +53,7 @@ export default function ToDoUpdateCard(props:Readonly<ToDoUpdateCard>):JSX.Eleme
             </div>
             <div className={"buttonDiv"}>
                 <button className={"content"} type={"submit"}>Anwenden</button>
-                <Link className={"content"} to={"/"}><button>Zurück</button></Link>
+                <button className={"content"} type={"button"} onClick={() => navigate("/")}>Zurück</button>
             </div>
         </form>
     )
