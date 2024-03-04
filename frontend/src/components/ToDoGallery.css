@@ -1,0 +1,8 @@
+.ToDoGallery {
+    margin: 2px;
+    border: 2px solid black;
+}
+
+.ToDoGallery h2 {
+    margin: 20px 0 10px 20px;
+}

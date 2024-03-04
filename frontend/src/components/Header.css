@@ -1,0 +1,51 @@
+.Header {
+    justify-content: space-between;
+    display: flex;
+    margin:1px;
+}
+
+.Header .button {
+    padding:0;
+    flex: 1;
+    text-align: center;
+    height: 30px;
+    transition: 0.5s;
+    font-weight: bold;
+    text-decoration: none;
+    color:black;
+    margin: 1px;
+}
+
+.Header .button button {
+    width: 100%;
+    border: 2px solid black;
+    background-color: white;
+    height: 30px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.Header .button .home:hover {
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+}
+
+.Header .button .open:hover {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+
+.Header .button .inProgress:hover {
+    background-color: orange;
+    color: white;
+    font-weight: bold;
+
+}
+
+.Header .button .done:hover {
+    background-color: green;
+    color: white;
+    font-weight: bold;
+}

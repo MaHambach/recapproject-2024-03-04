@@ -1,0 +1,19 @@
+.PostBar {
+    flex: 1;
+    justify-content: space-between;
+    display:flex;
+    margin: 2px;
+    border: 2px solid black;
+    align-items: center;
+}
+
+.PostBar label {
+    margin: 0 2px 0 2px;
+    display: table-cell;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+.PostBar input {
+    flex: 1;
+}
