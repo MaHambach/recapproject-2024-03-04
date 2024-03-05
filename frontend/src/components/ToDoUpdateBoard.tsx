@@ -4,7 +4,8 @@ import ToDoUpdateCard from "./ToDoUpdateCard.tsx";
 
 type ToDoUpdateBoardProps ={
     toDoList:ToDo[],
-    updateToDoFunction: (todo:ToDo) => void
+    updateToDo: (todo:ToDo) => void
+    triggerChange: () => void
 }
 
 export default function ToDoUpdateBoard(props:Readonly<ToDoUpdateBoardProps>):JSX.Element{
@@ -19,6 +20,6 @@ export default function ToDoUpdateBoard(props:Readonly<ToDoUpdateBoardProps>):JS
 
 
     return (
-        <ToDoUpdateCard toDo={formToDo} updateToDoFunction={props.updateToDoFunction}/>
+        <ToDoUpdateCard toDo={formToDo} triggerChange={props.triggerChange} updateToDoFunction={props.updateToDo}/>
     )
 }

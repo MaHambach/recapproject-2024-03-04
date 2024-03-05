@@ -5,7 +5,8 @@ import {ChangeEvent, FormEvent, useState} from "react";
 
 type ToDoUpdateCard= {
     toDo:ToDo,
-    updateToDoFunction: (todo:ToDo) => void
+    updateToDoFunction: (todo:ToDo) => void,
+    triggerChange: () => void
 }
 export default function ToDoUpdateCard(props:Readonly<ToDoUpdateCard>):JSX.Element{
     const [formToDo, setFormToDo] = useState<ToDo>(props.toDo);
@@ -23,7 +24,8 @@ export default function ToDoUpdateCard(props:Readonly<ToDoUpdateCard>):JSX.Eleme
             {
                 ...formToDo,
                 description: event.target.value
-            })
+            });
+        props.triggerChange();
     }
 
     function handleChangeSelect(event: ChangeEvent<HTMLSelectElement>):void {
@@ -31,7 +33,8 @@ export default function ToDoUpdateCard(props:Readonly<ToDoUpdateCard>):JSX.Eleme
             {
                 ...formToDo,
                 status: event.target.value
-            })
+            });
+        props.triggerChange();
     }
 
     return (
