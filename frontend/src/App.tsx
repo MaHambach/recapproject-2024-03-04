@@ -23,20 +23,20 @@ export default function App() {
             .then((response:AxiosResponse):void => {
                 setToDoList(response.data);
             })
-            .catch((error) => {
+            .catch((error):void => {
                 console.error("Error fetching data: ", error.message);
             });
     }
 
     function deleteToDoById(id:string):void {
         axios.delete('/api/todo/' + id)
-            .then( (response) => {
+            .then( (response):void => {
                 console.log(`Deleted todo with id `+ id + response.data);
+                fetchData();
             })
             .catch(error => {
                 console.error("Error deleting todo with id " + id + ": ", error.message);
             })
-        fetchData();
     }
 
     function updateToDo(todo:ToDo):void{
@@ -44,11 +44,11 @@ export default function App() {
             .then((response):void => {
                 console.log("Updated to: ");
                 console.log(response.data);
+                fetchData();
             })
             .catch((error):void => {
                 console.error("Error updating todo with id " + todo.id + ": ", error.message);
             })
-        fetchData();
     }
 
     function handleMoveUp(id:string):void{
@@ -62,7 +62,6 @@ export default function App() {
         } else if(todo.status === "DONE") {
             deleteToDoById(id)
         }
-        fetchData();
     }
 
     return (
@@ -70,11 +69,41 @@ export default function App() {
             <Header />
             <main>
                 <Routes>
-                    <Route path={"/"} element={<ToDoMainBoard toDoList={toDoList} triggerChange={fetchData} updateToDo={updateToDo} deleteToDoById={deleteToDoById} handleMoveUp={handleMoveUp}/>}/>
-                    <Route path={"/:id/update"} element={<ToDoUpdateBoard toDoList={toDoList} updateToDoFunction={updateToDo}/>}/>
-                    <Route path={"/open"} element={<ToDoByStatusBoard status={"OPEN"} toDoList={toDoList.filter((todo:ToDo):boolean => todo.status === "OPEN")} triggerChange={fetchData} updateToDo={updateToDo} deleteToDoById={deleteToDoById} handleMoveUp={handleMoveUp}/>}/>
-                    <Route path={"/in-progress"} element={<ToDoByStatusBoard status={"IN PROGRESS"} toDoList={toDoList.filter((todo:ToDo):boolean => todo.status === "IN_PROGRESS")} triggerChange={fetchData} updateToDo={updateToDo} deleteToDoById={deleteToDoById} handleMoveUp={handleMoveUp}/>}/>
-                    <Route path={"/done"} element={<ToDoByStatusBoard status={"DONE"} toDoList={toDoList.filter((todo:ToDo):boolean => todo.status === "DONE")} triggerChange={fetchData} updateToDo={updateToDo} deleteToDoById={deleteToDoById} handleMoveUp={handleMoveUp}/>}/>
+                    <Route path={"/"}
+                           element={<ToDoMainBoard
+                               toDoList={toDoList}
+                               triggerChange={fetchData}
+                               updateToDo={updateToDo}
+                               deleteToDoById={deleteToDoById}
+                               handleMoveUp={handleMoveUp}/>}/>
+                    <Route path={"/:id/update"}
+                           element={<ToDoUpdateBoard
+                               toDoList={toDoList}
+                               updateToDo={updateToDo}/>}/>
+                    <Route path={"/open"}
+                           element={<ToDoByStatusBoard
+                               status={"OPEN"}
+                               toDoList={toDoList.filter((todo:ToDo):boolean => todo.status === "OPEN")}
+                               triggerChange={fetchData}
+                               updateToDo={updateToDo}
+                               deleteToDoById={deleteToDoById}
+                               handleMoveUp={handleMoveUp}/>}/>
+                    <Route path={"/in-progress"}
+                           element={<ToDoByStatusBoard
+                               status={"IN PROGRESS"}
+                               toDoList={toDoList.filter((todo:ToDo):boolean => todo.status === "IN_PROGRESS")}
+                               triggerChange={fetchData}
+                               updateToDo={updateToDo}
+                               deleteToDoById={deleteToDoById}
+                               handleMoveUp={handleMoveUp}/>}/>
+                    <Route path={"/done"}
+                           element={<ToDoByStatusBoard
+                               status={"DONE"}
+                               toDoList={toDoList.filter((todo:ToDo):boolean => todo.status === "DONE")}
+                               triggerChange={fetchData}
+                               updateToDo={updateToDo}
+                               deleteToDoById={deleteToDoById}
+                               handleMoveUp={handleMoveUp}/>}/>
                 </Routes>
             </main>
             <Footer triggerChange={fetchData}/>

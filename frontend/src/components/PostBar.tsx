@@ -13,12 +13,14 @@ export default function PostBar(props:Readonly<PostBarProps>):JSX.Element{
                 description: formData,
                 status: "OPEN"
             })
-            .then(response => console.log("New todo added with id " + response.data.id + "."))
+            .then(response => {
+                console.log("New todo added with id " + response.data.id + ".");
+                props.triggerChange();
+            })
             .catch(error => {
                 console.error("Error creating todo: ", error.message);
             })
         setFormData("");
-        props.triggerChange();
     }
 
     function handleChange(event: ChangeEvent<HTMLInputElement>):void {
